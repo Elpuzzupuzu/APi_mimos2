@@ -1,0 +1,65 @@
+/* Contenedor principal del slider */
+#product-slider {
+    display: flex;  /* Organiza los productos en fila horizontal */
+    justify-content: center;  /* Centra los productos horizontalmente */
+    align-items: center;  /* Centra los productos verticalmente */
+    gap: 20px;  /* Espacio entre productos */
+    overflow-x: auto;  /* Permite que el contenido sea desplazable horizontalmente */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos para cada producto */
+#product-slider div {
+    background-color: #e9e5e9;
+    border: 1px solid #ef2de2;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 200px;
+    max-width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+#product-slider div:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilo de las imágenes de los productos */
+#product-slider img {
+    width: 60%;
+    height: 60%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Contenedor de los botones de navegación */
+#slider-controls {
+    display: flex;
+    justify-content: center;  /* Centra los botones horizontalmente */
+    margin-top: 20px;  /* Espacio entre el slider y los botones */
+    gap: 10px;  /* Espacio entre los botones */
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

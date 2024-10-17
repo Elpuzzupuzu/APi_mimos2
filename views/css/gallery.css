@@ -1,0 +1,35 @@
+
+
+
+.slider-container {
+    width: 80%; /* Ancho del slider */
+    max-width: 800px; /* Máximo ancho para asegurar la responsividad */
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto; /* Centra el slider horizontalmente */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    width: 100%; /* Ancho completo de cada slide */
+    height: 300px; /* Altura fija para cada slide */
+    flex: 0 0 auto; /* No se ajusta automáticamente */
+    overflow: hidden; /* Oculta contenido que sobresale */
+    position: relative; /* Asegura que las imágenes se posicionen correctamente */
+}
+
+.slide img {
+  
+    width: 100%; /* Ancho al 100% del contenedor */
+    height: 100%; /* Altura al 100% del contenedor */
+    object-fit: contain; /* Ajusta la imagen dentro del slide sin  */
+}
+
+body {
+    overflow-x: hidden; /* Deshabilita la barra de desplazamiento horizontal */
+}
+

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/gallery.css">
+    <link rel="stylesheet" href="./css/cinta.css">
+
+    
+</head>
+<body>
+    <header>
+        <div class="container-hero">
+            <div class="container hero">
+                <div class="customer-support">
+                    <i class="fa-solid fa-gifts"></i>
+                    <div class="content-customer-support">
+                        <span class="text">soporte al cliente</span>
+                        <span class="number">99999999</span>
+                    </div>
+                </div>
+
+                <div class="container-logo">
+                    <i class="fa-solid fa-cat"></i>
+                    <h1 class="logo"><a href="../img/mimitos.jpg">MimitoShop</a></h1>
+                </div>
+
+                <div class="container-user">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="#container-options">perfil</a> 
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <div class="content-shopping-cart">
+                        <span class="text">Carrito</span>
+                        <span class="number">(0)</span>
+                    </div>
+                </div>
+            </div> <!--parte 1 del header-->
+        </div>
+
+        <div class="container-navbar">
+            <nav class="navbar container">
+                <i class="fa-solid fa-bars"></i>
+                <ul class="menu">
+                    <li><a href="#">inicio</a></li>
+                    <li><a href="#">Squishmallows</a></li>
+                    <li><a href="#">Galex</a></li>
+                    <li><a href="#">Muñelocos</a></li>
+
+                </ul>
+
+                <form class="search-form" action="">
+                    <input type="search" placeholder="buscar..." name="" id="">
+                    <button class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="content-banner">
+            <p>Coleccionables y más</p>
+            <h2>Ediciones especiales <br>Hecha un ojo !!!</h2>
+            <a href="#container-options">Comprar ahora</a>  <!--haremos pruebas aqui-->
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="container container-features">
+            <div class="card-feature">
+                <i class="fa-solid fa-plane-up"></i>
+                <div class="feature-content">
+                    <span>Envios gratuitos a nivel internacioal</span>
+                    <p>En pedidos mayores a $400</p>
+                </div>
+            </div>
+            <div class="card-feature">
+                <i class="fa-solid fa-wallet"></i>
+                <div class="feature-content">
+                    <span>Reembolso garantizado</span>
+                    <p>100% garantia de Reembolso</p>
+                </div>
+            </div>
+            <div class="card-feature">
+                <i class="fa-solid fa-gift"></i>
+                <div class="feature-content">
+                    <span>tarjeta de regalo especial</span>
+                    <p>incluye descuentos con regalos!!!</p>
+                </div>
+            </div>
+            <div class="card-feature">
+                <i class="fa-solid fa-headset"></i>
+                <div class="feature-content">
+                    <span>servicio al cliente 24/7</span>
+                    <p>llamenos al 9999999999</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container top-categories">
+            <h1 class="heading-1">Mejores Categorias</h1>
+            <div class="container-categories">
+                <div class="card-category category-moca">   <!---volver dinamico-->
+                    <p>Squismallows</p>
+                    <span>ver mas</span>
+                </div>
+                <div class="card-category category-expreso">
+                    <p>Galex</p>
+                    <span>ver mas</span>
+                </div>
+                <div class="card-category category-capuchino">
+                    <p>Muñelocos</p>
+                    <span>ver mas</span>
+                </div>
+            </div>
+        </section>  <!--seccion de categorias-->
+
+        <section class="container top-products" >
+            <h1 class="heading-1">Mejores productos</h1>
+
+            <div class="container-options" id="container-options">
+                <button id="todos"  class="boton-menu boton-categoria "> todos</button>
+                <button id="Squismallows"  class="boton-menu boton-categoria "> Squish</button>
+                <button id="pow"  class="boton-menu boton-categoria "> pow</button>
+                <button id="Terraria"  class="boton-menu boton-categoria "> Terraria</button>
+                <a class="boton-menu boton-carrito active"  href="./carrito.html"><i class="fa-solid fa-cart-shopping"></i>carrito <span id="numerito"  class="numerito">0</span></a>
+   
+             <!-- SECCION DE PRODUCTOS SLIDER -->
+            </div>
+
+            <div class="products-container" id="products-container">
+                <!--aqui van los productos -->
+
+                <!-- Contenedor del slider -->
+                 
+                <section id="product-slider">
+
+                </section>
+            
+                <!-- Botones de navegación del slider -->
+                 
+                <div id="slider-controls">
+                    <button id="prev-btn">Anterior</button>
+                    <button id="next-btn">Siguiente</button>
+                </div>
+            
+     
+
+            </div> <!--fin seccion de productos-->
+
+            
+
+           
+
+            
+
+
+
+        </section>
+        <!--galeria-->
+            <section class="slider" id="slider">
+                            <!-- Contenido del slider se cargará dinámicamente aquí -->
+            </section>
+
+
+       
+        
+            
+
+
+        <section class="container specials">
+            <h1 class="heading-1">Especiales</h1>
+
+            <div class="container-products">
+                <!--producto 1-->
+                <div class="card-product">
+                    <div class="container-img">
+                        <img src="/img/illia.jpg" alt="illia">
+                        <span class="discount">-13%</span>
+                        <div class="button-group">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="content-card-product">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>Cafe irish</h3>
+                        <span class="add-cart">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="price">$200 <span>$240</span></p>
+                    </div>
+                </div> 
+                <div class="card-product">
+                    <div class="container-img">
+                        <img src="/img/illia.jpg" alt="illia">
+                        <span class="discount">-13%</span>
+                        <div class="button-group">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="content-card-product">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>SPECIAL 3</h3>
+                        <span class="add-cart">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="price">$200 <span>$240</span></p>
+                    </div>
+                </div> 
+
+                <div class="card-product">
+                    <div class="container-img">
+                        <img src="/img/illia.jpg" alt="illia">
+                        <span class="discount">-13%</span>
+                        <div class="button-group">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="content-card-product">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>SPECIAL 4</h3>
+                        <span class="add-cart">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="price">$200 <span>$240</span></p>
+                    </div>
+                </div> 
+
+                <div class="card-product">
+                    <div class="container-img">
+                        <img src="/img/illia.jpg" alt="illia">
+                        <span class="discount">-13%</span>
+                        <div class="button-group">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="content-card-product">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>SPECIAL 4</h3>
+                        <span class="add-cart">
+                            <i class="fa-solid fa-basket-shopping"></i>  
+                        </span>
+                        <p class="price">$200 <span>$240</span></p>
+                    </div>
+                </div> 
+                <!--producto 2-->
+            </div> <!--fin seccion de productos-->
+   
+        </section>
+
+        
+
+        <section class="container blogs">
+            <h1 class="heading-1">ultimos blogs</h1>
+
+            <div class="container-blogs">
+
+                <div class="card-blog">
+                    <div class="container-img">  <!--imagenes del blog-->
+                        <img src="/img/b1.png" alt="">
+                        <div class="button-group-blog">
+                            <span>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-link"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="content-blog">
+                        <h3>Lorem ipsum dolor sit amet consectetur </h3>
+                        <span>29 de Junio 2024</span>
+                        <p>
+                            lorem 
+                        </p>
+                        <div class="btn-read-more">
+                            leer mas
+                        </div>
+                        
+                    </div>
+
+                </div><!--fin car-blog-->
+
+                <div class="card-blog">
+                    <div class="container-img">
+                        <img src="/img//b1.png" alt="">
+                        <div class="button-group-blog">
+                            <span>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-link"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="content-blog">
+                        <h3>Lorem ipsum dolor sit amet consectetur </h3>
+                        <span>29 de Junio 2024</span>
+                        <p>
+                            lorem 
+                        </p>
+                        <div class="btn-read-more">
+                            leer mas
+                        </div>
+                        
+                    </div>
+
+                </div><!--fin car-blog-->
+
+                <div class="card-blog">
+                    <div class="container-img">
+                        <img src="/img/b3.jpg" alt="">
+                        <div class="button-group-blog">
+                            <span>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-link"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="content-blog">
+                        <h3>Lorem ipsum dolor sit amet consectetur </h3>
+                        <span>29 de Junio 2024</span>
+                        <p>
+                            lorem 
+                        </p>
+                        <div class="btn-read-more">
+                            leer mas
+                        </div>
+                        
+                    </div>
+
+                </div><!--fin car-blog-->
+            </div>
+
+
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="container container-footer">
+            <div class="menu-footer">
+                <div class="contact-info">
+                    <p class="title-footer">Informacion de contacto</p>
+                    <ul>
+                        <li>direcion</li>
+                        <li>Telefono: 9999999</li>
+                        <li>email: mimitos@gmail.com</li>
+                    </ul>
+                    <div class="social-icons">
+                        <span class="facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </span>
+                        <span class="twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                        <span class="youtube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </span>
+                        <span class="pinterest">
+                            <i class="fa-brands fa-square-pinterest"></i>
+                        </span>
+                        <span class="instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </span>
+                        <!--fin span-->
+                    </div>
+                </div>
+                <div class="information">
+                    <p class="title-footer">Informacion</p>
+                    <ul>
+                        <li><a href="#">Acerca de nosotros</a></li>
+                        <li><a href="#">Informacion Delivery</a></li>
+                        <li><a href="#">Politicas de Privacidad</a></li>
+                        <li><a href="#">Terminos y Condiciones</a></li>
+                        <li><a href="#">contactanos</a></li>
+                    </ul>
+                </div>
+                <div class="my-account">
+                    <p class="title-footer">Mi cuenta</p>
+                    <ul>
+                        <li><a href="#">Mi cuenta</a></li>
+                        <li><a href="#">Historial</a></li>
+                        <li><a href="#">Lista de deseos</a></li>
+                        <li><a href="#">Noticias</a></li>
+                        <li><a href="#">Reembolsos</a></li>
+                    </ul>
+                </div>
+                <div class="newsletter">
+                    <p class="title-footer">Noticias</p>
+                    <div class="content">
+                        <p>suscribete para recibir las noticas</p>
+                        <input type="email" name="" id="" placeholder="Ingresa tu correo">
+                        <button>suscribete</button>
+                    </div>
+                </div>
+            </div><!--fin menu footer-->
+            <div class="copyright">
+                <p>by: Mimitos &copy; 2024</p>
+                <img src="/img/payment.png" alt="">
+
+            </div>
+        </div> <!--fin footer-->
+    </footer>
+    
+    <script src="./js/gallery.js"></script>
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+    <script src="./js/slider.js"></script>
+    
+</body>
+</html>

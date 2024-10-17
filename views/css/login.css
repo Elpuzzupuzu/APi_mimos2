@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-main: #c11c5b;
+    --clr-main-light: #e65a82;
+    --clr-white: #d8aada;
+    --clr-gray: hsl(0, 11%, 80%);
+    --clr-red: #961818;
+    --clr-pink: #f4c2c2; /* Color palo de rosa */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--clr-main-light);
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-box {
+    background-color: var(--clr-pink); /* Contenedor palo de rosa */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    position: relative; /* Para que los elementos dentro del contenedor puedan posicionarse relativamente */
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--clr-pink); /* Borde del color del contenedor */
+    position: absolute;
+    top: -75px; /* Para que la mitad de la imagen salga del contenedor */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login-header h1 {
+    color: var(--clr-main);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 80px; /* Para evitar que el título se superponga con la imagen */
+}
+
+.login-header span {
+    color: black;
+    font-size: 1rem;
+    
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--clr-gray);
+    font-size: 1rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.button-group button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--clr-main);
+    color: var(--clr-white);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0.5rem 0; /* Margen para separar los botones */
+}
+
+.button-group button:hover {
+    background-color: var(--clr-main-light);
+    color: var(--clr-main);
+}
+
+.button-group a {
+    color: var(--clr-white);
+    text-align: center;
+    display: block; /* Para asegurarnos de que el enlace ocupe todo el botón */
+    padding: 0.75rem 1.5rem;
+}

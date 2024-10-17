@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Productos</title>
+    <link rel="stylesheet" href="slider.css"> <!-- Enlace a tu archivo CSS -->
+</head>
+<body>
+    <h1>Lista de productos</h1>
+
+    <!-- Contenedor del slider -->
+    <section id="product-slider">
+        <!-- Aquí se mostrarán los productos dinámicamente -->
+    </section>
+
+    <!-- Botones de navegación del slider -->
+    <div id="slider-controls">
+        <button id="prev-btn">Anterior</button>
+        <button id="next-btn">Siguiente</button>
+    </div>
+
+    <!-- Script para manejar la funcionalidad del slider -->
+    <script>
+        let currentPage = 1;
+        const pageSize = 5;  // Número de productos por página
+
+        // Función para obtener productos
+        async function fetchProducts(page) {
+            const response = await fetch(`http://localhost:3000/api/products/slider?page=${page}&pageSize=${pageSize}`);
+            const data = await response.json();
+
+            // Renderizar los productos en el slider
+            const slider = document.getElementById('product-slider');
+            slider.innerHTML = '';  // Limpiar el contenido previo
+
+            data.products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <img src="${product.img}" alt="${product.name}">
+                    <p>${product.description}</p>
+                    <p><strong>Precio:</strong> $${product.price}</p>
+                    <p><strong>Stock:</strong> ${product.stock} unidades</p>
+                `;
+                slider.appendChild(productDiv);
+            });
+
+            // Manejar botones de paginación
+            document.getElementById('prev-btn').disabled = page === 1;
+            document.getElementById('next-btn').disabled = page === data.totalPages;
+        }
+
+        // Controladores de eventos para los botones "Anterior" y "Siguiente"
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                fetchProducts(currentPage);
+            }
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            currentPage++;
+            fetchProducts(currentPage);
+        });
+
+        // Cargar la primera página al inicio
+        fetchProducts(currentPage);
+    </script>
+</body>
+</html>
