@@ -1,44 +1,61 @@
 .products-container {
-    display: flex; /* Usar flexbox */
-    flex-direction: column; /* Para que el slider y los botones estén en columnas */
-    align-items: center; /* Centrar elementos en el eje horizontal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #product-slider {
-    display: flex; /* Para mostrar los productos en una fila */
-    overflow-x: auto; /* Permitir desplazamiento horizontal si es necesario */
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Para un desplazamiento suave */
+    gap: 10px; /* Espacio entre productos */
+    width: 100%; /* Asegúrate de que el slider ocupe todo el ancho disponible */
 }
 
-.product-item { /* Asegúrate de tener esta clase para los productos */
-    flex: 0 0 auto; /* Los productos no se encogerán ni se expandirán */
-    margin: 10px; /* Espacio entre productos */
-    /* Añade más estilos según sea necesario, como ancho, alto, etc. */
+.product-item {
+    flex: 0 0 calc(20% - 20px); /* 5 productos por fila (20% cada uno) con un margen de 10px */
+    margin: 10px;
+    box-sizing: border-box; /* Incluir padding y margen en el cálculo del ancho */
+}
+
+/* Dispositivos medianos (tablets) */
+@media (max-width: 768px) {
+    .product-item {
+        flex: 0 0 calc(33.33% - 20px); /* 3 productos por fila en tablets */
+    }
+}
+
+/* Dispositivos pequeños (móviles) */
+@media (max-width: 480px) {
+    #product-slider {
+        flex-wrap: nowrap; /* Evitar el wrap en móviles, mantener el scroll horizontal */
+    }
+    
+    .product-item {
+        flex: 0 0 calc(100% - 20px); /* 1 producto por fila en móviles */
+    }
 }
 
 #slider-controls {
-    margin-top: 20px; /* Espacio por encima de los botones */
-}
-
-#slider-controls {
-    margin-top: 20px; /* Espacio por encima de los botones */
+    margin-top: 20px;
 }
 
 #slider-controls button {
-    background-color: #ff007b; /* Color de fondo azul */
-    color: #FFFFFF; /* Color del texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambiar cursor al pasar el mouse */
-    transition: background-color 0.3s, transform 0.2s; /* Efecto de transición */
+    background-color: #ff007b;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #slider-controls button:hover {
-    background-color: #b30057; /* Color de fondo azul más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Levantar el botón ligeramente al pasar el mouse */
+    background-color: #b30057;
+    transform: translateY(-2px);
 }
 
 #slider-controls button:active {
-    transform: translateY(0); /* Regresar a la posición original al hacer clic */
+    transform: translateY(0);
 }

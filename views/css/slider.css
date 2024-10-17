@@ -10,16 +10,55 @@ h1 {
     color: #333;
 }
 
+/* #products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+} */
+
+
+
+/*  PRUEBAS DEL RESPONSIVE DEL SLIDER */
 #products-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px; /* Añade espacio entre productos */
 }
 
-/* .container-img img{
-    height: 40px;
+#products-container > .product {
+    flex: 1 1 200px; /* Tamaño base de los productos */
+    max-width: 300px; /* Tamaño máximo del producto */
+    margin: 10px;
+}
 
-} */
+/* Dispositivos medianos (tablets) */
+@media (max-width: 768px) {
+    #products-container > .product {
+        flex: 1 1 150px; /* Tamaño más pequeño para tablets */
+        max-width: 200px;
+    }
+}
+
+/* Dispositivos pequeños (móviles) */
+@media (max-width: 480px) {
+    #products-container {
+        flex-direction: column; /* Muestra los productos en columna en móviles */
+        align-items: center; /* Centra los productos en pantalla pequeña */
+    }
+    
+    #products-container > .product {
+        flex: 1 1 100%; /* Productos ocupan toda la pantalla en móviles */
+        max-width: 100%;
+    }
+}
+
+
+
+
+/*-----------------------*/
+
+
 
 .product-card {
     background-color: white;
@@ -712,7 +751,7 @@ html{
 }
 /* tarjeta de prodcutos  */
 .card-product{
-    background-color: #ecee45;   /*  ESTE ES EL FONDO DE LOS PRODCUCTOS DEL SLIDER*/
+    background-color: #f7e849;   /*  ESTE ES EL FONDO DE LOS PRODCUCTOS DEL SLIDER*/
     padding: 2rem 3rem;
     border-radius: 5rem;
     cursor: pointer;
