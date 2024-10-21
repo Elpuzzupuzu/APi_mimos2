@@ -9,6 +9,15 @@ exports.createProduct = async (data) => {
 };
 
 
+
+exports.getProductById = async (productId) => {
+    return await Product.findByPk(productId);
+};
+
+
+
+
+
 exports.getProductsForSlider = async (page, pageSize) => {
     const offset = (page - 1) * pageSize;  // Calcula el offset para la paginación
     const limit = pageSize;
@@ -25,3 +34,20 @@ exports.getProductsForSlider = async (page, pageSize) => {
         currentPage: page  // Página actual
     };
 };
+
+
+// testing 
+
+// En productService.js
+
+exports.updateProductStock = async (productId, quantity) => {
+    const product = await Product.findByPk(productId);
+    if (product) {
+        product.stock -= quantity; // Disminuir el stock
+        product.sold += quantity; // Aumentar el contador de vendidos
+        return await product.save(); // Guardar los cambios en la base de datos
+    }
+    throw new Error('Producto no encontrado');
+};
+
+

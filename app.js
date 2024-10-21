@@ -26,14 +26,6 @@ const allowedOrigins = [
     credentials: true
   }));
 
-
-
-
-
-
-
-
-
 app.use(express.json());
 
 app.use('/categories', categoryRoutes);

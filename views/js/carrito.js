@@ -1,39 +1,20 @@
-// Verificar si el usuario está autenticado
-// const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-// if (!userInfo) {
-//     // Si el usuario no está autenticado, eliminar userCart y productos-en-carrito de localStorage
-//     localStorage.removeItem('userCart');
-//     localStorage.removeItem('productos-en-carrito');
-    
-//     // Redirigir a la página de inicio de sesión
-//     window.location.href = 'login.html';
-// }
 
-// Continuar con el resto del código solo si el usuario está autenticado
+    // Obtener el carrito de la compra actual
+const productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
 
-//---------------------------AQUI SE OBTIENE EL CARRITO DE LA COMPRA ACTUAL----------------------------------------------//
-
-
-const productosEncarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
-
-
-//---------------------------------------------------------------------------------//
-
-console.log(productosEncarrito);
-
+// Contenedores y elementos de UI
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoProductos = document.querySelector("#carrito-productos");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
-const botoVaciar = document.querySelector("#carrito-acciones-vaciar");
+const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
 const contenedorTotal = document.querySelector("#total");
 let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 const botonComprar = document.querySelector("#carrito-acciones-comprar");
 
-// Funciones
-
+// Cargar productos en el carrito
 function cargarProductosCarrito() {
-    if (productosEncarrito && productosEncarrito.length > 0) {
+    if (productosEnCarrito && productosEnCarrito.length > 0) {
         contenedorCarritoVacio.classList.add("disabled");
         contenedorCarritoProductos.classList.remove("disabled");
         contenedorCarritoAcciones.classList.remove("disabled");
@@ -41,7 +22,7 @@ function cargarProductosCarrito() {
 
         contenedorCarritoProductos.innerHTML = "";
 
-        productosEncarrito.forEach(producto => {
+        productosEnCarrito.forEach(producto => {
             const div = document.createElement("div");
             div.classList.add("carrito-producto");
             div.innerHTML = ` 
@@ -77,8 +58,10 @@ function cargarProductosCarrito() {
     actualizarTotal();
 }
 
+// Cargar productos al iniciar
 cargarProductosCarrito();
 
+// Función para actualizar los botones de eliminar
 function actualizarBotonesEliminar() {
     botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 
@@ -87,103 +70,79 @@ function actualizarBotonesEliminar() {
     });
 }
 
+// Función para eliminar productos del carrito
 function eliminarDelCarrito(e) {
     const idBoton = parseInt(e.currentTarget.id); // Convertir el id a entero si es necesario
-    const index = productosEncarrito.findIndex(producto => producto.id === idBoton);
+    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
 
-    productosEncarrito.splice(index, 1);
+    productosEnCarrito.splice(index, 1);
     cargarProductosCarrito();
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEncarrito));
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
-// Botón vaciar carrito
-
-botoVaciar.addEventListener("click", vaciarCarrito);
+// Botón para vaciar el carrito
+botonVaciar.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito() {
-    productosEncarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEncarrito));
+    productosEnCarrito.length = 0;
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
     cargarProductosCarrito();
 }
 
+// Función para actualizar el total
 function actualizarTotal() {
-    const totalCalculado = productosEncarrito.reduce((acc, producto) => acc + (producto.price * producto.sold), 0);
+    const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.price * producto.sold), 0);
     contenedorTotal.innerText = `$${totalCalculado}`;
 }
 
-botonComprar.addEventListener("click", comprarCarrito);
-
-// Botón comprar carrito
-botonComprar.addEventListener("click", comprarCarrito);
-
-
-
-///  ESTA ES LA LOGICA QUE FALTA POR ACTUALIZAR
-
-/// la logica a solucionar es obtener el carrito y crearlo uno a cada usuario 
-
-
-
+// Función para manejar la compra
 async function comprarCarrito() {
-    const userCart = JSON.parse(localStorage.getItem('userCart'));  //<----- aqui vamos a trabajar 
-    if (!userCart || !userCart.cartId) {
-        console.error('No se encontró el ID del carrito en localStorage');
-        alert('Hubo un problema al obtener el ID del carrito. Por favor, intenta más tarde.');
+    const userId = localStorage.getItem("id_user"); // Obtener el userId desde localStorage
+
+    if (!userId) {
+        alert("No se encontró el ID de usuario. Inicia sesión para continuar.");
         return;
     }
 
-    const cartId = userCart.cartId;
-
     try {
-        // Iterar sobre cada producto y enviar una solicitud para agregarlo al carrito
-        for (let producto of productosEncarrito) {
-            const productId = producto.id;
-            const quantity = producto.sold;
-
-            const response = await fetch('http://localhost:8080/cart-items/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    cartId: cartId,
-                    productId: productId,
-                    quantity: quantity
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Error al agregar el producto al carrito');
-            }
-
-            const result = await response.json();
-            console.log('Producto agregado exitosamente:', result);
-        }
-
-        // Después de agregar todos los productos al carrito, proceder con la compra
-        const purchaseResponse = await fetch('http://localhost:8080/products/purchase', {
-            method: 'POST',
+        const response = await fetch(`http://localhost:3000/cart/${userId}/purchase`, {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(productosEncarrito)
+            body: JSON.stringify({
+                productosEnCarrito: productosEnCarrito
+            })
         });
 
-        if (!purchaseResponse.ok) {
-            throw new Error('Error en la compra');
+        if (response.ok) {
+            // Si la compra fue exitosa, vaciar el carrito en la interfaz
+            localStorage.removeItem("productos-en-carrito");
+            cargarProductosCarrito();
+            contenedorCarritoComprado.classList.remove("disabled");
+            contenedorCarritoAcciones.classList.add("disabled");
+            alert("Compra realizada con éxito");
+        } else {
+            const errorData = await response.json();
+            alert(`Error al realizar la compra: ${errorData.error}`);
         }
-
-        const data = await purchaseResponse.text();
-        console.log('Success:', data);
-        productosEncarrito.length = 0;
-        localStorage.setItem("productos-en-carrito", JSON.stringify(productosEncarrito));
-        contenedorCarritoVacio.classList.add("disabled");
-        contenedorCarritoProductos.classList.add("disabled");
-        contenedorCarritoAcciones.classList.add("disabled");
-        contenedorCarritoComprado.classList.remove("disabled");
-
     } catch (error) {
-        console.error('Error:', error);
-        alert('Hubo un problema al procesar la compra. Por favor, intenta más tarde.');
+        alert(`Error en el servidor: ${error.message}`);
     }
+
+    // Limpiar el carrito después de la compra
+    productosEnCarrito.length = 0;
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
+    // Actualizar la UI
+    contenedorCarritoVacio.classList.add("disabled");
+    contenedorCarritoProductos.classList.add("disabled");
+    contenedorCarritoAcciones.classList.add("disabled");
+    contenedorCarritoComprado.classList.remove("disabled");
+
+
 }
+
+// Asignar la función al botón de comprar
+botonComprar.addEventListener("click", comprarCarrito);
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo de Pago - Juguetería</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f8fc;
+        }
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid #FFD700;
+            position: relative;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #FF6347;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 100px;
+        }
+        .details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .details th {
+            background-color: #FFD700;
+            color: #fff;
+            padding: 12px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+        .details td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        .details tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .total {
+            text-align: right;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #FF6347;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .ribbon {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 150px;
+            height: 150px;
+            background-color: #FF6347;
+            color: #fff;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 700;
+            transform: rotate(45deg);
+            line-height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="ribbon">¡Gracias!</div>
+
+    <div class="header">
+        <h1>Recibo de Pago</h1>
+        <h2>Juguetería Mundo Mágico</h2>
+        <p><strong>Fecha:</strong> 20 de Octubre, 2024</p>
+    </div>
+
+    <div class="details">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pelota Saltarina</td>
+                    <td>2</td>
+                    <td

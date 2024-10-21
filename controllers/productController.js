@@ -30,3 +30,9 @@ exports.getProductsForSlider = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
+
+// cartController.js
+
+

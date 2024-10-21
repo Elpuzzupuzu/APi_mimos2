@@ -7,3 +7,19 @@ exports.getCartByUserId = async (userId) => {
 exports.createCart = async (data) => {
     return await Cart.create(data);
 };
+
+
+exports.emptyCart = async (userId) => {
+    return await Cart.destroy({ where: { id_user: userId } });
+};
+
+
+
+
+
+
+
+
+
+
+

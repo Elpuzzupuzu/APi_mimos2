@@ -2,7 +2,7 @@ let productos = []; // Almacena los productos obtenidos del backend
 async function getAllProducts() {
 
     try {
-        const response = await fetch('https://mimitos.onrender.com/api/products/getall');
+        const response = await fetch('http://localhost:3000/api/products/getall');
         if (!response.ok) throw new Error('Network response was not ok');
         const products = await response.json();
 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function fetchProducts(page) {
         try {
-            const response = await fetch(`https://mimitos.onrender.com/api/products/slider?page=${page}&pageSize=${pageSize}`);
+            const response = await fetch(`http://localhost:3000/api/products/slider?page=${page}&pageSize=${pageSize}`);
             if (!response.ok) throw new Error('Error al obtener los productos');
             const data = await response.json();
 
@@ -64,20 +64,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Renderizar los productos en el slider
 
-    
     function renderProducts(products) {
         slider.innerHTML = '';
-
+    
         if (!products || products.length === 0) {
             slider.innerHTML = '<p>No se encontraron productos.</p>';
             return;
         }
-
+    
         products.forEach(product => {
             const productDiv = document.createElement('div');
             productDiv.classList.add('product-item');
             productDiv.innerHTML = `
-                        <div class="card-product">
+                <div class="card-product">
                     <div class="container-img">
                         <img src="${product.img}" alt="Producto">
                         <span class="discount">-13%</span>
@@ -96,26 +95,47 @@ document.addEventListener('DOMContentLoaded', function () {
                             <i class="fa-regular fa-star"></i>
                         </div>
                         <h3>${product.name}</h3>
-                      
+    
                         <button class="add-cart" id="${product.id_product}">
                             <i class="fa-solid fa-basket-shopping"></i>
                         </button>
+    
+                        <button class="play-description" id="play-${product.id_product}">
+                            <i class="fa-solid fa-volume-high"></i> Escuchar descripción
+                        </button>
+    
                         <p class="price">$${product.price} <span></span></p>
                         <p class="stock">${product.stock} en stock</p>
                     </div>
                 </div>
-    
             `;
+    
             slider.appendChild(productDiv);
-
+    
+            // Evento para agregar el producto al carrito
             productDiv.querySelector('.add-cart').addEventListener('click', () => {
                 agregarAlCarrito(product.id_product);
             });
+    
+            // Evento para reproducir la descripción del producto
+            productDiv.querySelector(`#play-${product.id_product}`).addEventListener('click', () => {
+                reproducirDescripcion(product.description);
+            });
         });
-
     }
+    
+    // Función para reproducir la descripción usando ResponsiveVoice
+    function reproducirDescripcion(description) {
+        responsiveVoice.speak(description, "Spanish Latin American Female", { rate: 1 });
+    }
+    
+    
 
 
+
+    
+
+    /// FIN DEL SLIDER PARA REDENDERIZAR ///
 
     
     // PARTE LOGICA DEL CARRITO //
