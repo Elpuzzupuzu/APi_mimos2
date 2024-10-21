@@ -104,7 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             <i class="fa-solid fa-volume-high"></i> Escuchar descripción
                         </button>
     
-                        <p class="price">$${product.price} <span></span></p>
+                        <p class="price">$${product.price} <span></span> </p>
+                        <br>
                         <p class="stock">${product.stock} en stock</p>
                     </div>
                 </div>

@@ -626,6 +626,8 @@ html{
 
 }
 
+
+
 .category-moca{
     background-image: linear-gradient(#00000080,#00000080) , url(/img/illia.jpg);
     background-size: cover;
@@ -749,9 +751,9 @@ html{
     gap: 3rem;
 
 }
-/* tarjeta de prodcutos  */
+/* tarjeta de productos  */
 .card-product{
-    background-color: #f7e849;   /*  ESTE ES EL FONDO DE LOS PRODCUCTOS DEL SLIDER*/
+    background-color: #f2f1eff0;   /*  ESTE ES EL FONDO DE LOS PRODCUCTOS DEL SLIDER*/
     padding: 2rem 3rem;
     border-radius: 5rem;
     cursor: pointer;
@@ -809,6 +811,29 @@ html{
     cursor: pointer;
     transition: all .4s ease;
 }
+
+
+/* cambios del SPAN */
+.price {
+    font-size: 40rem; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Negrita */
+    color: #5922ff; /* Color del texto */
+    margin: 10px 0; /* Espaciado superior e inferior */
+}
+
+.price span {
+    font-size: 1rem; /* Tamaño de fuente para el span */
+    color: #888; /* Color del texto para el span */
+    text-decoration: line-through; /* Tachar el texto */
+}
+
+
+
+
+
+/*---------------*/
+
+
 
 .button-group span:hover{
     background-color: var(--primary-color);
@@ -892,7 +917,32 @@ html{
     justify-content: center;
 }
 
+
+.play-description{
+    justify-self: start;
+    width: 100px;
+    border: 2px solid var(--primary-color);    /* PRUEBAS*/
+    padding: 1.5rem;
+    border-radius: 10%;
+    cursor: pointer;
+    transition: all .4s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
 .add-cart:hover{
+    background-color: var(--primary-color);
+}
+
+.play-description:hover{
     background-color: var(--primary-color);
 }
 
@@ -908,7 +958,7 @@ html{
 
 .content-card-product .price{
     justify-self: end;
-    align-self: center;
+    align-self:center;
 
     font-size: 1.7rem;
     font-weight: 600;
@@ -920,10 +970,38 @@ html{
 .content-card-product .price {
     font-size: 1.5rem;
     font-weight: 400;
-    color: #000;
-    margin-left: .5rem;
+    color: #e90d4f;
+    margin-left: .1rem;
     animation: destello 2s infinite; /* Ajustamos la duración a 2 segundos */
 }
+
+
+
+.content-card-product .stock{
+    justify-self: end;
+    align-self:center;
+
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+
+
+
+.content-card-product .stock {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #e90d6c;
+    margin-left: 1.2rem;
+    animation: destello 2s infinite; /* Ajustamos la duración a 2 segundos */
+}
+
+
+
+
+
+
+
 
 /**----------**/
 
