@@ -122,6 +122,18 @@ async function comprarCarrito() {
             contenedorCarritoComprado.classList.remove("disabled");
             contenedorCarritoAcciones.classList.add("disabled");
             alert("Compra realizada con éxito");
+
+                        // Limpiar el carrito después de la compra
+            productosEnCarrito.length = 0;
+            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
+            // Actualizar la UI
+            contenedorCarritoVacio.classList.add("disabled");
+            contenedorCarritoProductos.classList.add("disabled");
+            contenedorCarritoAcciones.classList.add("disabled");
+            contenedorCarritoComprado.classList.remove("disabled");
+
+
         } else {
             const errorData = await response.json();
             alert(`Error al realizar la compra: ${errorData.error}`);
@@ -130,15 +142,7 @@ async function comprarCarrito() {
         alert(`Error en el servidor: ${error.message}`);
     }
 
-    // Limpiar el carrito después de la compra
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 
-    // Actualizar la UI
-    contenedorCarritoVacio.classList.add("disabled");
-    contenedorCarritoProductos.classList.add("disabled");
-    contenedorCarritoAcciones.classList.add("disabled");
-    contenedorCarritoComprado.classList.remove("disabled");
 
 
 }

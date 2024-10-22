@@ -23,6 +23,8 @@ exports.createCart = async (req, res) => {
 
 // testing
 
+
+
 exports.purchaseCart = async (req, res) => {
     const { userId } = req.params; // Obtener el userId de los parámetros
     const productosEnCarrito = req.body.productosEnCarrito; // Obtener el carrito del cuerpo de la solicitud
