@@ -50,7 +50,7 @@ main {
 }
 
 .producto-imagen {
-    width: 100%;
+    width: 80%;
     height: 200px; /* Altura fija */
     object-fit: cover; /* Ajusta la imagen para cubrir completamente el contenedor sin distorsionarla */
     border-radius: 1rem;

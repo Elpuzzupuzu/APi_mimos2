@@ -20,6 +20,7 @@ exports.createCart = async (req, res) => {
     }
 };
 
+
 // testing
 
 exports.purchaseCart = async (req, res) => {
@@ -37,7 +38,7 @@ exports.purchaseCart = async (req, res) => {
             }
 
             // Verificar que hay suficiente stock
-            if (product.stock >= 1) { // Asumiendo que se compra 1 por producto
+            if (product.sold <= product.stock) { // ya se verifica que el stock sea suficiente
                 // Actualizar el stock y el contador de vendidos
                 await productService.updateProductStock(producto.id_product, producto.sold); // Actualizar el stock por 1 unidad
             } else {
