@@ -39,7 +39,7 @@ exports.purchaseCart = async (req, res) => {
             // Verificar que hay suficiente stock
             if (product.stock >= 1) { // Asumiendo que se compra 1 por producto
                 // Actualizar el stock y el contador de vendidos
-                await productService.updateProductStock(producto.id_product, 1); // Actualizar el stock por 1 unidad
+                await productService.updateProductStock(producto.id_product, producto.sold); // Actualizar el stock por 1 unidad
             } else {
                 return res.status(400).json({ error: `No hay suficiente stock para el producto ${producto.name}` });
             }
