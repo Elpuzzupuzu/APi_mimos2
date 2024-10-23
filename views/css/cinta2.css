@@ -1,4 +1,4 @@
-.products-container {
+.container-products {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,13 +6,13 @@
 
 #product-slider {
     display: flex;
-    overflow-x: auto;  /* aqui esta la clave del responsive
+    overflow-x: auto;
     scroll-behavior: smooth; /* Para un desplazamiento suave */
     gap: 10px; /* Espacio entre productos */
     width: 100%; /* Asegúrate de que el slider ocupe todo el ancho disponible */
 }
 
-.product-item {
+.product-itemLE {
     flex: 0 0 calc(20% - 20px); /* 5 productos por fila (20% cada uno) con un margen de 10px */
     margin: 10px;
     box-sizing: border-box; /* Incluir padding y margen en el cálculo del ancho */
@@ -20,7 +20,7 @@
 
 /* Dispositivos medianos (tablets) */
 @media (max-width: 768px) {
-    .product-item {
+    .product-itemLE {
         flex: 0 0 calc(33.33% - 20px); /* 3 productos por fila en tablets */
     }
 }
@@ -31,16 +31,16 @@
         flex-wrap: nowrap; /* Evitar el wrap en móviles, mantener el scroll horizontal */
     }
     
-    .product-item {
+    .product-itemLE {
         flex: 0 0 calc(100% - 20px); /* 1 producto por fila en móviles */
     }
 }
 
-#slider-controls {
+#slider-controls2 {
     margin-top: 20px;
 }
 
-#slider-controls button {
+#slider-controls2 button {
     background-color: #ff007b;
     color: #FFFFFF;
     border: none;
@@ -51,11 +51,11 @@
     transition: background-color 0.3s, transform 0.2s;
 }
 
-#slider-controls button:hover {
+#slider-controls2 button:hover {
     background-color: #b30057;
     transform: translateY(-2px);
 }
 
-#slider-controls button:active {
+#slider-controls2 button:active {
     transform: translateY(0);
 }
