@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevBtn = document.getElementById('prev-btn2');
     const nextBtn = document.getElementById('next-btn2');
     const productsContainer = document.getElementById('products-container');
-    const slider2 = document.getElementById('slider2');
+    const slider2 = document.getElementById('product-slider2');
 
     // Asegurarte que los elementos existan antes de manipularlos
-    if (!numerito || !prevBtn || !nextBtn || !productsContainer || !slider) {
+    if (!numerito || !prevBtn || !nextBtn || !productsContainer || !slider2) {  // Verificación de slider2
         console.error('Algunos elementos del DOM no se encontraron.');
         return;
     }
@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Renderizar los productos en el slider
     function renderProducts(products) {
-        slider.innerHTML = '';
+        slider2.innerHTML = ''; // Usando slider2 en lugar de slider
     
         if (!products || products.length === 0) {
-            slider.innerHTML = '<p>No se encontraron productos.</p>';
+            slider2.innerHTML = '<p>No se encontraron productos.</p>'; // Usando slider2 aquí también
             return;
         }
     
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
     
-            slider.appendChild(productDiv);
+            slider2.appendChild(productDiv);
     
             // Evento para agregar el producto al carrito
             productDiv.querySelector('.add-cart').addEventListener('click', () => {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para agregar al carrito
     function agregarAlCarrito(productId) {
-        const productoAgregado = productos.find(producto => producto.id_product === productId);
+        const productoAgregado = productosLE.find(producto => producto.id_product === productId);
 
         if (productoAgregado) {
             const productoEnCarrito = productosEnCarrito.find(producto => producto.id_product === productId);
@@ -162,5 +162,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Cargar la primera página de productos limitados al inicio
     fetchLimitEditionProducts(currentPage);
-    // getAllProducts();  <----- la lógica de esto debe estar aparte :)
 });

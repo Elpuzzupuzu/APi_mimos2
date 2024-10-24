@@ -2,17 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden; /* Asegúrate de que el contenedor permita el desbordamiento horizontal */
 }
 
-#product-slider {
+#product-slider2 {
     display: flex;
-    overflow-x: auto;
+    overflow-x: auto;  /* Aquí está la clave para permitir el desplazamiento horizontal */
     scroll-behavior: smooth; /* Para un desplazamiento suave */
     gap: 10px; /* Espacio entre productos */
     width: 100%; /* Asegúrate de que el slider ocupe todo el ancho disponible */
+    padding-bottom: 10px; /* Añadir espacio para evitar que el contenido se corte */
+    flex-wrap: nowrap; /* Evitar que los productos se alineen en filas */
 }
 
-.product-itemLE {
+.product-item {
     flex: 0 0 calc(20% - 20px); /* 5 productos por fila (20% cada uno) con un margen de 10px */
     margin: 10px;
     box-sizing: border-box; /* Incluir padding y margen en el cálculo del ancho */
@@ -20,18 +23,18 @@
 
 /* Dispositivos medianos (tablets) */
 @media (max-width: 768px) {
-    .product-itemLE {
+    .product-item {
         flex: 0 0 calc(33.33% - 20px); /* 3 productos por fila en tablets */
     }
 }
 
 /* Dispositivos pequeños (móviles) */
 @media (max-width: 480px) {
-    #product-slider {
-        flex-wrap: nowrap; /* Evitar el wrap en móviles, mantener el scroll horizontal */
+    #product-slider2 {
+        flex-wrap: nowrap; /* Mantener el scroll horizontal en móviles */
     }
     
-    .product-itemLE {
+    .product-item {
         flex: 0 0 calc(100% - 20px); /* 1 producto por fila en móviles */
     }
 }

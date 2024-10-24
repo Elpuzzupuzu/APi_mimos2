@@ -722,7 +722,7 @@ html{
 
 .container-options button{
     color:#777;
-    background-color: #fff;
+    background-color: #fff;  /* esto de la color a los botones*/
     padding: .7rem 3rem;
     font-size: 1.4rem;
     text-transform: capitalize;
@@ -753,7 +753,7 @@ html{
 }
 /* tarjeta de productos  */
 .card-product{
-    background-color: #fffefef0;   /*  ESTE ES EL FONDO DE LOS PRODCUCTOS DEL SLIDER*/
+    background-color: #fffffff0;   /*  ESTE ES EL FONDO DE LOS PRODCUCTOS DEL SLIDER*/
     padding: 2rem 3rem;
     border-radius: 5rem;
     cursor: pointer;

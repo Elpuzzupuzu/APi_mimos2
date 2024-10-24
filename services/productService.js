@@ -1,8 +1,23 @@
+
 const Product = require('../models/Product');
 
 exports.getAllProducts = async () => {
     return await Product.findAll();
 };
+
+
+exports.getLimitEditionProducts = async () => {
+    return await Product.findAll({
+        where: {
+            limit_edition: true
+        }
+    });
+};
+
+
+
+
+
 
 exports.createProduct = async (data) => {
     return await Product.create(data);  // Asegúrate de que 'data' incluya 'img'
@@ -36,9 +51,42 @@ exports.getProductsForSlider = async (page, pageSize) => {
 };
 
 
+
+exports.getLimitEditionProducts = async (page, pageSize) => {
+    const offset = (page - 1) * pageSize;  // Calcula el offset para la paginación
+    const limit = pageSize;
+
+    const { rows: products, count: totalItems } = await Product.findAndCountAll({
+        where: {
+            limit_edition: true  // Filtra solo los productos con limit_edition en true
+        },
+        offset,
+        limit
+    });
+
+    return {
+        products,  // Productos de la página actual
+        totalItems,  // Número total de productos
+        totalPages: Math.ceil(totalItems / pageSize),  // Total de páginas
+        currentPage: page  // Página actual
+    };
+};
+
+
+
+
+
+
+
+
+///------------------------------------------/////
+
+
+
+
 // testing 
 
-// En productService.js
+// En productService.js  YA ESTA LISTO 
 
 exports.updateProductStock = async (productId, quantity) => {
     const product = await Product.findByPk(productId);
@@ -49,5 +97,3 @@ exports.updateProductStock = async (productId, quantity) => {
     }
     throw new Error('Producto no encontrado');
 };
-
-
