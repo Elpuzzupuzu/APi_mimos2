@@ -1,9 +1,10 @@
-// Definir URL y el ID del producto
-const productId = 10;  // Cambia esto según el ID del producto
-const apiUrl = `http://localhost:3000/api/products/${productId}`;
+// Obtener el productId de la URL de manera dinámica
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('productId'); // Obtiene el ID del producto desde la URL
+const apiUrl = `https://mimitos.onrender.com/api/products/${productId}`;
 
 // Variables del carrito
-let productos = [];  // Asegúrate de que contiene todos los productos
+let productos = [];  // Lista de productos para almacenar el producto cargado
 let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
 let numerito;  // Declara numerito aquí para que sea accesible en todo el código
 
@@ -54,15 +55,14 @@ async function fetchAndRenderProduct() {
 
             const productHtml = `
                 <div class="breadcrumb">
-                    <a href="index.html">Home</a> / <a href="#">${product.season} / <a href="#">Plush Toys</a> / ${product.name}
+                    <a href="index.html">Home</a> / <a href="#">${product.season}</a> / <a href="#">Plush Toys</a> / ${product.name}
                 </div>
 
                 <div class="product-container">
                     <div class="product-image">
                         <img src="${product.img}" alt="${product.name}">
                         <div class="thumbnail-images">
-                            <img src="plush_thumb1.jpg" alt="Thumbnail 1">
-                            <img src="plush_thumb2.jpg" alt="Thumbnail 2">
+                            
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@ async function fetchAndRenderProduct() {
 
                             <div class="delivery">
                                 <p>Delivery</p>
-                                <p><span class="highlight">Leaves Today</span> if ordered within an hour</p>
+                                <p><span class="highlight">Historia:</span> ${product.description}</p>
                             </div>
 
                             <div class="shipping-estimation">
@@ -93,7 +93,7 @@ async function fetchAndRenderProduct() {
 
                         <div class="payment-options">
                             <h4>Pay Now</h4>
-                            <img src="visa.png" alt="Visa">
+                            <img src="../img/payment.png" alt="Visa">    
                             <img src="mastercard.png" alt="Mastercard">
                             <img src="paypal.png" alt="PayPal">
                             <img src="applepay.png" alt="Apple Pay">
@@ -111,7 +111,6 @@ async function fetchAndRenderProduct() {
                 agregarAlCarrito(productId);
             });
 
-            
         } else {
             console.error('Producto no encontrado:', product.message);
             document.querySelector('.product-page').innerHTML = `<p>Producto no encontrado</p>`;

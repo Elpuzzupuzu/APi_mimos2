@@ -2,7 +2,7 @@ let productos = []; // Almacena los productos obtenidos del backend
 async function getAllProducts() {
 
     try {
-        const response = await fetch('http://localhost:3000/api/products/getall');
+        const response = await fetch('https://mimitos.onrender.com/api/products/getall');
         if (!response.ok) throw new Error('Network response was not ok');
         const products = await response.json();
 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function fetchProducts(page) {
         try {
-            const response = await fetch(`http://localhost:3000/api/products/slider?page=${page}&pageSize=${pageSize}`);
+            const response = await fetch(`https://mimitos.onrender.com/api/products/slider?page=${page}&pageSize=${pageSize}`);
             if (!response.ok) throw new Error('Error al obtener los productos');
             const data = await response.json();
 
@@ -81,7 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         <img src="${product.img}" alt="Producto">
                         <span class="discount">-13%</span>
                         <div class="button-group">
-                            <span><i class="fa-solid fa-eye"></i></span>
+                            <!-- Icono del ojo con data-product-id -->
+                            <span class="view-details" data-product-id="${product.id_product}">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
                             <span><i class="fa-regular fa-heart"></i></span>
                             <span><i class="fa-solid fa-code-compare"></i></span>
                         </div>
@@ -122,8 +125,14 @@ document.addEventListener('DOMContentLoaded', function () {
             productDiv.querySelector(`#play-${product.id_product}`).addEventListener('click', () => {
                 reproducirDescripcion(product.description);
             });
+    
+            // Evento para redirigir a la página de detalles del producto
+            productDiv.querySelector('.view-details').addEventListener('click', () => {
+                window.location.href = `producto.html?productId=${product.id_product}`;
+            });
         });
     }
+    
     
     // Función para reproducir la descripción usando ResponsiveVoice
     function reproducirDescripcion(description) {
