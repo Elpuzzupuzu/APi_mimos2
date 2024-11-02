@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Función para cargar las imágenes desde el endpoint
     function loadImages() {
-        fetch('https://mimitos.onrender.com/gallery')
+        fetch('http://localhost:3000/gallery')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al cargar las imágenes');

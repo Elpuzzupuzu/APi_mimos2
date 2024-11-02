@@ -6,6 +6,16 @@ exports.getAllProducts = async () => {
 };
 
 
+
+
+exports.getProductById = async (productId) => {
+    return await Product.findByPk(productId);
+};
+
+
+
+
+
 exports.getLimitEditionProducts = async () => {
     return await Product.findAll({
         where: {
@@ -28,6 +38,12 @@ exports.createProduct = async (data) => {
 exports.getProductById = async (productId) => {
     return await Product.findByPk(productId);
 };
+
+
+
+
+
+
 
 
 

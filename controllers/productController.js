@@ -10,6 +10,29 @@ exports.getAllProducts = async (req, res) => {
 };
 
 
+
+exports.getProductById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const product = await productService.getProductById(id);
+        if (product) {
+            res.json(product);
+        } else {
+            res.status(404).json({ message: 'Producto no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
+
+
+
+
+
+
+
 exports.getLimitEditionProducts = async (req, res) => {
     try {
         const products = await productService.getLimitEditionProducts();
